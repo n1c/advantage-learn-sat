@@ -22,12 +22,12 @@ const props = defineProps({
 });
 
 const form = useForm({
-  left: props.left,
-  right: props.right,
+  left: props.left ?? 0,
+  right: props.right ?? 0,
 });
 
 function submit() {
-  form.get(route("game"), form);
+  form.post(route("game.store"));
 }
 </script>
 
@@ -60,6 +60,7 @@ function submit() {
           />
           <button class="text-xl p-3" @click="form.left++">+</button>
         </label>
+        <div v-if="form.errors.left">{{ form.errors.left }}</div>
 
         <label for="right" class="block py-2">
           Right:
@@ -74,6 +75,7 @@ function submit() {
           />
           <button class="text-xl p-3" @click="form.right++">+</button>
         </label>
+        <div v-if="form.errors.right">{{ form.errors.right }}</div>
 
         <button type="submit" class="bg-blue-500 p-2">Submit</button>
 

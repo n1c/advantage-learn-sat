@@ -9,8 +9,8 @@ class GameRequest extends FormRequest
     public function rules()
     {
         return [
-            'left' => ['required', 'integer', 'numeric'],
-            'right' => ['required', 'integer', 'numeric'],
+            'left' => ['min:0', 'required', 'integer', 'numeric'],
+            'right' => ['min:0', 'required', 'integer', 'numeric'],
         ];
     }
 }

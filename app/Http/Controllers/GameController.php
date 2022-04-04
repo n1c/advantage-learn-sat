@@ -8,7 +8,12 @@ use Inertia\Inertia;
 
 class GameController
 {
-    public function __invoke(GameRequest $request)
+    public function __invoke()
+    {
+        return Inertia::render('Game');
+    }
+
+    public function store(GameRequest $request)
     {
         $left = (int) $request->input('left', 0);
         $right = (int) $request->input('right', 0);
