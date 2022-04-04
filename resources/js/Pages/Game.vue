@@ -55,6 +55,7 @@ function submit() {
             type="number"
             step="1"
             required
+            min="0"
             class="text-gray-900"
           />
           <button class="text-xl p-3" @click="form.left++">+</button>
@@ -68,6 +69,7 @@ function submit() {
             type="number"
             step="1"
             required
+            min="0"
             class="text-gray-900"
           />
           <button class="text-xl p-3" @click="form.right++">+</button>
