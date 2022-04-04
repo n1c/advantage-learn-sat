@@ -1,5 +1,5 @@
 <script setup>
-import { Head, Link } from "@inertiajs/inertia-vue3";
+import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
 
 const props = defineProps({
@@ -21,13 +21,13 @@ const props = defineProps({
   },
 });
 
-const form = {
+const form = useForm({
   left: props.left,
   right: props.right,
-};
+});
 
 function submit() {
-  Inertia.get(route("game"), form);
+  form.get(route("game"), form);
 }
 </script>
 
