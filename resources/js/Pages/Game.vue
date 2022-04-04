@@ -1,10 +1,14 @@
 <script setup>
-import { Head } from '@inertiajs/inertia-vue3';
+import { Head, Link } from '@inertiajs/inertia-vue3';
 import { Inertia } from '@inertiajs/inertia';
 
 const props = defineProps({
   description: {
     type: String,
+    required: true,
+  },
+  isFinished: {
+    type: Boolean,
     required: true,
   },
   left: {
@@ -36,7 +40,16 @@ function submit() {
         {{ description }}
       </h1>
 
+      <Link
+        v-show="isFinished"
+        :href="route('game')"
+        class="underline"
+      >
+        Reset
+      </Link>
+
       <form
+        v-show="!isFinished"
         class="pt-4"
         @submit.prevent="submit"
       >
@@ -52,6 +65,12 @@ function submit() {
             step="1"
             required
           >
+          <button
+            class="text-xl p-3"
+            @click="form.left++"
+          >
+            +
+          </button>
         </label>
 
         <label
@@ -66,6 +85,12 @@ function submit() {
             step="1"
             required
           >
+          <button
+            class="text-xl p-3"
+            @click="form.right++"
+          >
+            +
+          </button>
         </label>
 
         <button

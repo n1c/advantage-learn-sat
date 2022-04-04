@@ -64,13 +64,8 @@ class Game
         );
     }
 
-    private function getLeader(): string
-    {
-        return $this->left > $this->right ? 'Left' : 'Right';
-    }
-
     // We have a winner if one player has >= 3 points and the gap is bigger 2
-    private function hasWinner(): bool
+    public function hasWinner(): bool
     {
         if (($this->left + $this->right) < ScoreOption::WIN->value) {
             return false;
@@ -79,6 +74,11 @@ class Game
         return $this->isInAdvantage()
             ? (abs($this->left - $this->right) >= self::TO_WIN) // If we're in advantage and either player leads by +2
             : $this->left === ScoreOption::WIN->value || $this->right === ScoreOption::WIN->value;
+    }
+
+    private function getLeader(): string
+    {
+        return $this->left > $this->right ? 'Left' : 'Right';
     }
 
     // @TODO: This name feels uncomfortable, it means "are we out of a normal game length 0-4 points".

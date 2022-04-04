@@ -16,6 +16,7 @@ class GameController
 
         return Inertia::render('Game', [
             'description' => $game->getDescription(),
+            'isFinished' => $game->hasWinner(),
             'left' => $left,
             'right' => $right,
         ]);
